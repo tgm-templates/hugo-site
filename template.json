@@ -1,0 +1,14 @@
+{
+  "name": "hugo-site",
+  "repository": "https://github.com/tgm-templates/hugo-site",
+  "description": "Hugo site template",
+  "variables": [
+    {
+      "name": "author_name",
+      "description": "author's name"
+    }
+  ],
+  "files": [
+    "config.toml"
+  ]
+}
