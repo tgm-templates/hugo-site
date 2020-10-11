@@ -14,6 +14,15 @@ Hugo Site
 </html>
 ```
 
+* Customized models for template variables
+
+```html
+<!doctype html>
+{{- /*gotype: hugo-site/stubs.PageInfo*/ -}}
+<html lang="en">
+</html>
+```
+
 # References
 
 * Hugo: <https://gohugo.io/>
