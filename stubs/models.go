@@ -233,6 +233,8 @@ func (r *Scratch) GetSortedMapValues(key string) []string {
 func (r *Scratch) Delete(key string) {
 }
 
+// ========== customized section ============
+
 //customized page params
 type PageParams struct {
 	tags       []string
