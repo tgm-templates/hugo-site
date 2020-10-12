@@ -78,6 +78,16 @@ func (r *PageInfo) Scratch() Scratch {
 	return Scratch{}
 }
 
+//.HasMenuCurrent is a method in Page object returning a boolean value.
+func (r *PageInfo) HasMenuCurrent(menu string, menuEntry interface{}) bool {
+	return true
+}
+
+//.IsMenuCurrent is a method in Page object returning a boolean value
+func (r *PageInfo) IsMenuCurrent(menu string, menuEntry interface{}) bool {
+	return true
+}
+
 type SitesInfo struct {
 	First SiteInfo //returns the site for the first language. If this is not a multilingual setup, it will return itself.
 }
@@ -186,6 +196,11 @@ type Time struct {
 // format {{ .Date.Format "Jan 2nd 2006"}}
 func (r *Time) Format(pattern string) string {
 	return ""
+}
+
+//.Unix returns the local Time corresponding to the given Unix time, sec seconds and nsec nanoseconds since January 1, 1970 UTC.
+func (r *Time) Unix() int {
+	return 0
 }
 
 type Scratch struct {
