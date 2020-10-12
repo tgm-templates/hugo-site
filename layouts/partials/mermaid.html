@@ -1,0 +1,10 @@
+<script>
+    (function () {
+        let mermaidPrefix = "language-mermaid";
+        Array.prototype.forEach.call(document.querySelectorAll("[class^=" + mermaidPrefix + "]"), function (code) {
+            code.classList.add("mermaid");
+        });
+    })();
+</script>
+
+<script async src="https://unpkg.com/mermaid@8.8.2/dist/mermaid.min.js"></script>
