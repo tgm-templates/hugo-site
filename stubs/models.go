@@ -142,15 +142,15 @@ type HugoInfo struct {
 	Generator   string //<meta> tag for the version of Hugo that generated the site. .Hugo.Generator outputs a complete HTML tag; e.g. <meta name="generator" content="Hugo 0.18" />
 	Version     string //the current version of the Hugo binary you are using e.g. 0.13-DEV
 	Environment string //the current running environment as defined through the --environment cli tag.
-	BuildDate   string //the git commit hash of the current Hugo binary e.g. 0e8bed9ccffba0df554728b46c5bbf6d78ae5247
-	CommitHash  string //the compile date of the current Hugo binary formatted with RFC 3339 e.g. 2002-10-02T10:00:00-05:00
+	BuildDate   string //the compile date of the current Hugo binary formatted with RFC 3339 e.g. 2002-10-02T10:00:00-05:00
+	CommitHash  string //the git commit hash of the current Hugo binary e.g. 0e8bed9ccffba0df554728b46c5bbf6d78ae5247
 }
 
 type GitInfo struct {
 	AbbreviatedHash string //the abbreviated commit hash (e.g., 866cbcc)
 	AuthorName      string //the author’s name, respecting .mailmap
 	AuthorEmail     string //the author’s email address, respecting .mailmap
-	AuthorDate      string //the author date
+	AuthorDate      Time   //the author date
 	Hash            string //the commit hash (e.g., 866cbccdab588b9908887ffd3b4f2667e94090c3)
 	Subject         string //commit message subject (e.g., tpl: Add custom index function)
 }
