@@ -1,5 +1,7 @@
 package stubs
 
+type Pages []PageInfo
+
 // https://gohugo.io/variables/
 type PageInfo struct {
 	Aliases         []string     //aliases of this page
@@ -26,7 +28,7 @@ type PageInfo struct {
 	Next            *PageInfo    //Points up to the next regular page
 	NextInSection   *PageInfo    //Points up to the next regular page below the same top level section
 	OutputFormats   []string     //contains all formats, including the current format, for a given page
-	Pages           []PageInfo   //a collection of associated pages
+	Pages           Pages        //a collection of associated pages
 	Permalink       string       //the Permanent link for this page
 	Plain           string       //the Page content stripped of HTML tags and presented as a string.
 	PlainWords      []string     //the Page content stripped of HTML as a []string using Go’s strings.Fields to split .Plain into a slice.the Page content stripped of HTML as a []string using Go’s strings.Fields to split .Plain into a slice.
@@ -92,12 +94,65 @@ func (r *PageInfo) IsMenuCurrent(menu string, menuEntry interface{}) bool {
 	return true
 }
 
+// Lower weight gets higher precedence
+func (p *Pages) ByWeight() []PageInfo {
+	return []PageInfo{}
+}
+
+func (p *Pages) ByDate() []PageInfo {
+	return []PageInfo{}
+}
+
+func (p *Pages) ByPublishDate() []PageInfo {
+	return []PageInfo{}
+}
+
+func (p *Pages) ByExpiryDate() []PageInfo {
+	return []PageInfo{}
+}
+func (p *Pages) ByLastmod() []PageInfo {
+	return []PageInfo{}
+}
+func (p *Pages) ByLength() []PageInfo {
+	return []PageInfo{}
+}
+func (p *Pages) ByTitle() []PageInfo {
+	return []PageInfo{}
+}
+func (p *Pages) ByLinkTitle() []PageInfo {
+	return []PageInfo{}
+}
+
+func (p *Pages) ByParam(param string) []PageInfo {
+	return []PageInfo{}
+}
+
+func (p *Pages) GroupBy(section string) map[string][]PageInfo {
+	return map[string][]PageInfo{}
+}
+
+func (p *Pages) GroupByDate(date string) map[string][]PageInfo {
+	return map[string][]PageInfo{}
+}
+func (p *Pages) GroupByPublishDate(date string) map[string][]PageInfo {
+	return map[string][]PageInfo{}
+}
+func (p *Pages) GroupByLastmod(date string) map[string][]PageInfo {
+	return map[string][]PageInfo{}
+}
+func (p *Pages) GroupByExpiryDate(date string) map[string][]PageInfo {
+	return map[string][]PageInfo{}
+}
+func (p *Pages) GroupByParam(param string) map[string][]PageInfo {
+	return map[string][]PageInfo{}
+}
+
 type SitesInfo struct {
 	First SiteInfo //returns the site for the first language. If this is not a multilingual setup, it will return itself.
 }
 
 type SiteInfo struct {
-	AllPages        []PageInfo             //array of all pages, regardless of their translation
+	AllPages        Pages                  //array of all pages, regardless of their translation
 	Author          map[string]interface{} //a map of the authors as defined in the site configuration.
 	BaseURL         string                 //the base URL for the site as defined in the site configuration
 	BuildDrafts     bool                   // a boolean (default: false) to indicate whether to build drafts as defined in the site configuration boolean (default: false) to indicate whether to build drafts as defined in the site configuration
@@ -114,8 +169,8 @@ type SiteInfo struct {
 	Languages       []LanguageInfo         //an ordered list (ordered by defined weight) of languages
 	LastChange      Time                   //a string representing the date/time of the most recent change to your site
 	Menus           []MenuEntry            //all of the menus in the site.
-	Pages           []PageInfo             //array of all content ordered by Date with the newest first
-	RegularPages    []PageInfo             //a shortcut to the regular page collection
+	Pages           Pages                  //array of all content ordered by Date with the newest first
+	RegularPages    Pages                  //a shortcut to the regular page collection
 	Sections        []string               //top-level directories of the site.
 	Title           string                 //a string representing the title of the site
 	Taxonomies      map[string]string      //taxonomies
