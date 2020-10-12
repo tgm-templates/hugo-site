@@ -108,7 +108,7 @@ type SiteInfo struct {
 	LanguageCode    string                 //a string representing the language as defined in the site configuration. This is mostly used to populate the RSS feeds with the right language code.
 	LanguagePrefix  string                 //this can be used to prefix URLs to point to the correct language
 	Languages       []LanguageInfo         //an ordered list (ordered by defined weight) of languages
-	LastChange      string                 //a string representing the date/time of the most recent change to your site
+	LastChange      Time                   //a string representing the date/time of the most recent change to your site
 	Menus           []MenuEntry            //all of the menus in the site.
 	Pages           []PageInfo             //array of all content ordered by Date with the newest first
 	RegularPages    []PageInfo             //a shortcut to the regular page collection
