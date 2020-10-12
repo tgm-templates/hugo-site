@@ -55,6 +55,7 @@ type PageInfo struct {
 	WordCount       int          //the number of words in the content.
 	GitInfo         GitInfo      // git info
 	Params          PageParams   //Page-level params
+	Paginator       *Paginator   //paginator
 }
 
 type SitesInfo struct {
@@ -85,6 +86,22 @@ type SiteInfo struct {
 	Title           string                 //a string representing the title of the site
 	Taxonomies      map[string]string      //taxonomies
 	Params          SiteParams             //a container holding the values from the params section of your site configuration.
+}
+
+type Paginator struct {
+	PageNumber            int        //The current page’s number in the pager sequence
+	URL                   string     //The relative URL to the current pager
+	Pages                 []PageInfo //The pages in the current pager
+	NumberOfElements      int        //The number of elements on this page
+	HasPrev               bool       //Whether there are page(s) before the current
+	Prev                  PageInfo   //The pager for the previous page
+	HasNext               bool       //Whether there are page(s) after the current
+	Next                  PageInfo   //The pager for the next page
+	First                 PageInfo   //The pager for the first page
+	Last                  PageInfo   //The pager for the last page
+	Pagers                []PageInfo
+	TotalPages            int //The number of pages in the paginator
+	TotalNumberOfElements int //The number of elements on all pages in this paginator
 }
 
 type LanguageInfo struct {
