@@ -58,6 +58,26 @@ type PageInfo struct {
 	Paginator       *Paginator   //paginator
 }
 
+// The view is an alternative layout and should be a file name that points to a template in one of the locations specified in the documentation for Content Views.
+func (r *PageInfo) Render(layout string) string {
+	return ""
+}
+
+// .RenderString is a method on Page that renders some markup to HTML using the content renderer defined for that page (if not set in the options).
+func (r *PageInfo) RenderString(markup string) string {
+	return ""
+}
+
+//.GetPage returns a page of a given path. Both Site and Page implements this method
+func (r *PageInfo) GetPage(path string) PageInfo {
+	return PageInfo{}
+}
+
+//Acts as a “scratchpad” to allow for writable page- or shortcode-scoped variables.
+func (r *PageInfo) Scratch() Scratch {
+	return Scratch{}
+}
+
 type SitesInfo struct {
 	First SiteInfo //returns the site for the first language. If this is not a multilingual setup, it will return itself.
 }
@@ -86,6 +106,11 @@ type SiteInfo struct {
 	Title           string                 //a string representing the title of the site
 	Taxonomies      map[string]string      //taxonomies
 	Params          SiteParams             //a container holding the values from the params section of your site configuration.
+}
+
+//.GetPage returns a page of a given path. Both Site and Page implements this method
+func (r *SiteInfo) GetPage(path string) PageInfo {
+	return PageInfo{}
 }
 
 type Paginator struct {
@@ -161,6 +186,36 @@ type Time struct {
 // format {{ .Date.Format "Jan 2nd 2006"}}
 func (r *Time) Format(pattern string) string {
 	return ""
+}
+
+type Scratch struct {
+}
+
+// Set the given value to a given key
+func (r *Scratch) Set(key string, value string) {
+}
+
+// Get the value of a given key
+func (r *Scratch) Get(key string) interface{} {
+	return ""
+}
+
+// Will add a given value to existing value of the given key.
+// For single values, Add accepts values that support Go’s + operator. If the first Add for a key is an array or slice, the following adds will be appended to that list.
+func (r *Scratch) Add(key string, value string) {
+}
+
+// Takes a key, mapKey and value and add a map of mapKey and value to the given key.
+func (r *Scratch) SetInMap(key string, mapKey string, value string) {
+}
+
+// Returns array of values from key sorted by mapKey
+func (r *Scratch) GetSortedMapValues(key string) []string {
+	return []string{}
+}
+
+// Removes the given key
+func (r *Scratch) Delete(key string) {
 }
 
 //customized page params
