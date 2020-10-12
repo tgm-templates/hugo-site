@@ -1,7 +1,6 @@
 package stubs
 
 // https://gohugo.io/variables/
-
 type PageInfo struct {
 	Aliases         []string     //aliases of this page
 	Content         string       //the content itself, defined below the front matter.
@@ -27,7 +26,7 @@ type PageInfo struct {
 	Next            *PageInfo    //Points up to the next regular page
 	NextInSection   *PageInfo    //Points up to the next regular page below the same top level section
 	OutputFormats   []string     //contains all formats, including the current format, for a given page
-	Pages           []*PageInfo  //a collection of associated pages
+	Pages           []PageInfo   //a collection of associated pages
 	Permalink       string       //the Permanent link for this page
 	Plain           string       //the Page content stripped of HTML tags and presented as a string.
 	PlainWords      []string     //the Page content stripped of HTML as a []string using Go’s strings.Fields to split .Plain into a slice.the Page content stripped of HTML as a []string using Go’s strings.Fields to split .Plain into a slice.
@@ -71,6 +70,11 @@ func (r *PageInfo) RenderString(markup string) string {
 //.GetPage returns a page of a given path. Both Site and Page implements this method
 func (r *PageInfo) GetPage(path string) PageInfo {
 	return PageInfo{}
+}
+
+//.GetPage returns a page of a given path. Both Site and Page implements this method
+func (r *PageInfo) Paginate(options ...interface{}) Paginator {
+	return Paginator{}
 }
 
 //Acts as a “scratchpad” to allow for writable page- or shortcode-scoped variables.
