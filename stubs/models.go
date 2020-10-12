@@ -6,11 +6,11 @@ type PageInfo struct {
 	Aliases         []string     //aliases of this page
 	Content         string       //the content itself, defined below the front matter.
 	Data            SiteData     // the data specific to this type of page.
-	Date            string       //the date associated with the page
+	Date            Time         //the date associated with the page
 	Description     string       //the description for the page.
 	Dir             string       //the path of the folder containing this content file. The path is relative to the content folder.
 	Draft           bool         //a boolean, true if the content is marked as a draft in the front matter.
-	ExpiryDate      string       //the date on which the content is scheduled to expire
+	ExpiryDate      Time         //the date on which the content is scheduled to expire
 	File            FileInfo     //filesystem-related data for this content file
 	FuzzyWordCount  int          //the approximate number of words in the content.
 	Hugo            HugoInfo     //hugo Variables.
@@ -22,7 +22,7 @@ type PageInfo struct {
 	Keywords        []string     //the meta keywords for the content.
 	Kind            string       //the page’s kind. Possible return values are page, home, section, taxonomy, or taxonomyTerm. Note that there are also RSS, sitemap, robotsTXT, and 404 kinds, but these are only available during the rendering of each of these respective page’s kind and therefore not available in any of the Pages collections.
 	Language        LanguageInfo //a language object that points to the language’s definition in the site config. .Language.Lang gives you the language code.
-	Lastmod         string       //the date the content was last modified
+	Lastmod         Time         //the date the content was last modified
 	LinkTitle       string       //access when creating links to the content. If set, Hugo will use the linktitle from the front matter before title.
 	Next            *PageInfo    //Points up to the next regular page
 	NextInSection   *PageInfo    //Points up to the next regular page below the same top level section
@@ -33,7 +33,7 @@ type PageInfo struct {
 	PlainWords      []string     //the Page content stripped of HTML as a []string using Go’s strings.Fields to split .Plain into a slice.the Page content stripped of HTML as a []string using Go’s strings.Fields to split .Plain into a slice.
 	Prev            *PageInfo    //Points down to the previous regular page
 	PrevInSection   *PageInfo    //Points down to the previous regular page below the same top level section
-	PublishDate     string       //the date on which the content was or will be published
+	PublishDate     Time         //the date on which the content was or will be published
 	RSSLink         string       //link to the page’s RSS feed. This is deprecated
 	RawContent      string       //raw markdown content without the front matter
 	ReadingTime     string       //the estimated time, in minutes, it takes to read the content.
@@ -153,6 +153,14 @@ type GitInfo struct {
 	AuthorDate      string //the author date
 	Hash            string //the commit hash (e.g., 866cbccdab588b9908887ffd3b4f2667e94090c3)
 	Subject         string //commit message subject (e.g., tpl: Add custom index function)
+}
+
+type Time struct {
+}
+
+// format {{ .Date.Format "Jan 2nd 2006"}}
+func (r *Time) Format(pattern string) string {
+	return ""
 }
 
 //customized page params
