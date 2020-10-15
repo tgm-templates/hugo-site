@@ -152,34 +152,41 @@ type SitesInfo struct {
 }
 
 type SiteInfo struct {
-	AllPages        Pages                  //array of all pages, regardless of their translation
-	Author          map[string]interface{} //a map of the authors as defined in the site configuration.
-	BaseURL         string                 //the base URL for the site as defined in the site configuration
-	BuildDrafts     bool                   // a boolean (default: false) to indicate whether to build drafts as defined in the site configuration boolean (default: false) to indicate whether to build drafts as defined in the site configuration
-	Copyright       string                 //a string representing the copyright of your website as defined in the site configuration.
-	Data            SiteData               //custom data
-	DisqusShortname string                 //a string representing the shortname of the Disqus shortcode as defined in the site configuration.
-	GoogleAnalytics string                 //a string representing your tracking code for Google Analytics as defined in the site configuration.
-	Home            *PageInfo              //reference to the homepage’s page object
-	IsMultiLingual  bool                   //whether there are more than one language in this site.
-	IsServer        bool                   //a boolean to indicate if the site is being served with Hugo’s built-in server
-	Language        LanguageInfo           //indicates the language currently being used to render the website
-	LanguageCode    string                 //a string representing the language as defined in the site configuration. This is mostly used to populate the RSS feeds with the right language code.
-	LanguagePrefix  string                 //this can be used to prefix URLs to point to the correct language
-	Languages       []LanguageInfo         //an ordered list (ordered by defined weight) of languages
-	LastChange      Time                   //a string representing the date/time of the most recent change to your site
-	Menus           []MenuEntry            //all of the menus in the site.
-	Pages           Pages                  //array of all content ordered by Date with the newest first
-	RegularPages    Pages                  //a shortcut to the regular page collection
-	Sections        []string               //top-level directories of the site.
-	Title           string                 //a string representing the title of the site
-	Taxonomies      map[string]string      //taxonomies
-	Params          SiteParams             //a container holding the values from the params section of your site configuration.
+	AllPages        Pages             //array of all pages, regardless of their translation
+	Author          Author            //a map of the authors as defined in the site configuration.
+	BaseURL         string            //the base URL for the site as defined in the site configuration
+	BuildDrafts     bool              // a boolean (default: false) to indicate whether to build drafts as defined in the site configuration boolean (default: false) to indicate whether to build drafts as defined in the site configuration
+	Copyright       string            //a string representing the copyright of your website as defined in the site configuration.
+	Data            SiteData          //custom data
+	DisqusShortname string            //a string representing the shortname of the Disqus shortcode as defined in the site configuration.
+	GoogleAnalytics string            //a string representing your tracking code for Google Analytics as defined in the site configuration.
+	Home            *PageInfo         //reference to the homepage’s page object
+	IsMultiLingual  bool              //whether there are more than one language in this site.
+	IsServer        bool              //a boolean to indicate if the site is being served with Hugo’s built-in server
+	Language        LanguageInfo      //indicates the language currently being used to render the website
+	LanguageCode    string            //a string representing the language as defined in the site configuration. This is mostly used to populate the RSS feeds with the right language code.
+	LanguagePrefix  string            //this can be used to prefix URLs to point to the correct language
+	Languages       []LanguageInfo    //an ordered list (ordered by defined weight) of languages
+	LastChange      Time              //a string representing the date/time of the most recent change to your site
+	Menus           []MenuEntry       //all of the menus in the site.
+	Pages           Pages             //array of all content ordered by Date with the newest first
+	RegularPages    Pages             //a shortcut to the regular page collection
+	Sections        []string          //top-level directories of the site.
+	Title           string            //a string representing the title of the site
+	Taxonomies      map[string]string //taxonomies
+	Params          SiteParams        //a container holding the values from the params section of your site configuration.
 }
 
 //.GetPage returns a page of a given path. Both Site and Page implements this method
 func (r *SiteInfo) GetPage(path string) PageInfo {
 	return PageInfo{}
+}
+
+type Author struct {
+	name  string
+	email string
+	bio   string
+	photo struct{ url string }
 }
 
 type Paginator struct {
