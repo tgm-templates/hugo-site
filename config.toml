@@ -2,5 +2,5 @@ baseURL = "/"
 languageCode = "en-us"
 title = "My New Hugo Site"
 
-[params]
-author = "@author_name@"
+[Author]
+name = "@author_name@"
